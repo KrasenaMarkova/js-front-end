@@ -1,0 +1,47 @@
+function solve(data) {
+    class Song {
+        typeList;
+        name;
+        time;
+
+        constructor(typeList, name, time) {
+            this.typeList = typeList;
+            this.name = name;
+            this.time = time;
+        }
+    }
+
+    let n = Number(data[0]);
+    let songs = [];
+
+    for (let i = 1; i <= n; i++) {
+        let[typeList, name, time] = data[i].split('_');
+        let song = new Song(typeList, name, time);
+        songs.push(song);
+    }
+
+    let filterType = data[n + 1];
+
+    songs
+        .filter(song => filterType === 'all' || song.typeList === filterType)
+        .forEach(song => console.log(song.name));
+}
+
+solve([3,
+    'favourite_DownTown_3:14',
+    'favourite_Kiss_4:16',
+    'favourite_Smooth Criminal_4:01',
+    'favourite']
+    );
+solve([4,
+    'favourite_DownTown_3:14',
+    'listenLater_Andalouse_3:24',
+    'favourite_In To The Night_3:58',
+    'favourite_Live It Up_3:48',
+    'listenLater']
+    );
+solve([2,
+    'like_Replay_3:15',
+    'ban_Photoshop_3:48',
+    'all']
+    );
