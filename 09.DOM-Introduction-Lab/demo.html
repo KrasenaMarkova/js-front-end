@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+            padding-left: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title">Hello there!</h1>
+    <p class="red">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, reprehenderit! Sit, dolore debitis
+        fugiat, eum ratione ducimus iste voluptates eveniet atque amet deserunt corporis labore earum tempora. Dolor,
+        atque doloremque.</p>
+
+    <div>
+        <input id="message" type="text">
+        <button onclick="edit()">Set Content</button>
+
+        <button onclick="console.log('Hello from Dom!')">Click Me</button>
+        <!-- така се появява като съобщение в отделен прозорец -->
+        <button onclick="alert('Hello from Dom!')">Click Me</button>
+        <!-- така се появява като съобщение в отделен прозорец  като им ОК или Cancel-->
+        <button onclick="confirm('Hello from Dom!')">Click Me</button>
+        <!-- така се появява поле, където потребителя може да напише нещо -->
+        <button onclick="prompt('Hello from Dom!')">Click Me</button>
+
+        <!-- така извикваме долу написаната функция и като отворим в браузара излиза изпълнението на функцията -->
+        <button onclick="sum(5, 3)">Click Me</button>
+        <script>
+            function sum(a, b) {
+                alert(a + b);
+            }
+        </script>
+
+        <button class="red" onclick="product(18, 13)">Click For Multiplication</button>
+    </div>
+    
+    <!-- така използваме функция от js файл -->
+    <script src="demo.js"></script>
+
+</body>
+
+</html>
