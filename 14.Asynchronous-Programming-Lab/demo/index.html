@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Demo</title>
+</head>
+
+<body>
+
+    <button onclick="getData(event)">Click To Get Data</button>
+    <button onclick="doStuff()">Click To Do Stuff</button>
+
+    <script>
+
+        function doStuff() {
+            document.body.append('...');
+        }
+
+        // !!!! запомни и използвай
+        function getData(ev) {
+            // изключваме бутона след като е клинкнат веднъж
+            ev.target.disable = true;
+
+            // задаваме loading анимация
+            let loader = document.createElement('td');
+            loader.innerHTML = '<td colSpan= "2">Loading...</tr>';
+                document.querySelector('tbody').replaceChildren(loader);
+
+            // подаваме заявка
+            //  fetch('https://swapi.dev/api/people')
+            //     .then((data) => console.log(data));
+
+
+            // подаваме заявка
+            let myPromise = fetch('https://swapi.dev/api/people');
+
+            myPromise
+                .then((res) => res.json())
+                .then(showData)
+                .catch((err) => console.error(err));;
+        }
+
+        // функция, която обработва данните
+        function showData(data) {
+            let tbody = document.querySelector('tbody');
+            // подаваме без параметри за да го опразним
+            tbody.replaceChildren();
+            
+            for (let person of data.result) {
+                let row = document.createElement('tr');
+                row.innerHTML = `<td>${person.name}</td><td><a href ="${person.url}">${person.url}</a></td>`;
+                tbody.appendChild(row);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
